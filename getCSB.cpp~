@@ -1,7 +1,0 @@
-TF1* getCSB(){
-
-  TF1 *fun=new TF1("fun","exp([0])*(exp([1]*(10.602-x))-1.)",0.5,7);
-  fun->SetParameters(-31.4,3.57);
-
-  return fun;
-}
