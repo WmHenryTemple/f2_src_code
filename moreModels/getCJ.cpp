@@ -7,17 +7,13 @@
 
 using namespace std;
 
-TGraph* getCJ( string choice="25"){
+TGraph* getCJ( Int_t choice=1){
   TGraph* graph;
   Float_t result=0;
   TString fname;
   ifstream file;
   string word;
-  if(choice=="21")fname="src/moreModels/CJ15sfn_21deg.out";
-  if(choice=="25")fname="src/moreModels/CJ15sfn_25deg.out";
-  if(choice=="29")fname="src/moreModels/CJ15sfn_29deg.out";
-  if(choice=="33")fname="src/moreModels/CJ15sfn_33deg.out";
-  if(choice=="39")fname="src/moreModels/CJ15sfn_39deg.out";
+  fname="CJ15sfn_25deg.out";
   file.open(fname);
   cout <<" Is the File open?"<<  file.is_open()<<endl;
   if(file.is_open()==1)
@@ -59,16 +55,9 @@ TGraph* getCJ( string choice="25"){
 	  f2dp[i]=f2d[i]/f2p[i];
 	  cout << ep[i] << "\t" << f2dp[i] << endl ;
 	}
-      vector <double> xx,yy;
-      for (Int_t i=0;i<size-1;i++)
-	{
-	  if(x[i]<0.94)
-	    {
-	      xx.push_back(x[i]);
-	      yy.push_back(f2dp[i]);
-	    }
-	}
-      graph=new TGraph(xx.size(),&xx[0],&yy[0]);
+
+
+      graph=new TGraph(size,x,f2dp);
 
     }//if file is open
   file.close();

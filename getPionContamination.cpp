@@ -1,5 +1,6 @@
 TF1* getPionContamination(double run=2525){
   // targets
+
   // al 26.98
   // h 1.01
   // d 2.01
@@ -12,49 +13,59 @@ TF1* getPionContamination(double run=2525){
   TF1 *pionC;
 
   if(target==1.01 && angle==21.035)
-  pionC=new TF1("pionC","4.58*exp(2.25*x)/pow(x,13.2)",1.,8);
+  pionC=new TF1("pionC","4.49937*exp(1.75345*x)/pow(x,11.7137)",1.,8);
   if(target==2.01 && angle==21.035)
-  pionC=new TF1("pionC","2.96*exp(.541*x)/pow(x,7.52)",1.,8);
+  pionC=new TF1("pionC","1.59403*exp(-1.38128*x)/pow(x,1.59377)",1.,8);
   if(target==12.01 && angle==21.035)
-  pionC=new TF1("pionC","0.401*exp(.513*x)/pow(x,6.00)",1.,8);
+  pionC=new TF1("pionC","0.417755*exp(0.563993*x)/pow(x,6.14275)",1.,8);
   if(target==26.98 && angle==21.035)
-  pionC=new TF1("pionC",".236*exp(-1.23*x)/pow(x,.762)",1.,8);
+   pionC=new TF1("pionC","0.291226*exp(-0.330604*x)/pow(x,3.40186)",1.,8);
+
+  if(target==1.01 && angle==-20.995)
+  pionC=new TF1("pionC","4.49937*exp(1.75345*x)/pow(x,11.7137)",1.,8);
+  if(target==2.01 && angle==-20.995)
+  pionC=new TF1("pionC","1.59403*exp(-1.38128*x)/pow(x,1.59377)",1.,8);
+  if(target==12.01 && angle==-20.995)
+  pionC=new TF1("pionC","0.417755*exp(0.563993*x)/pow(x,6.14275)",1.,8);
+  if(target==26.98 && angle==-20.995)
+   pionC=new TF1("pionC","0.291226*exp(-0.330604*x)/pow(x,3.40186)",1.,8);
+
 
   if(target==1.01 && angle==38.975)
-  pionC=new TF1("pionC",".244*exp(-.162*x)/pow(x,5.27)",1.,8);
+  pionC=new TF1("pionC",".166675*exp(0.299433*x)/pow(x,5.98419)",1.,8);
   if(target==2.01 && angle==38.975)
-  pionC=new TF1("pionC","0.37*exp(0.0364*x)/pow(x,5.48)",1.,8);
+  pionC=new TF1("pionC","0.400041*exp(0.00551476*x)/pow(x,5.43935)",1.,8);
   if(target==12.01 && angle==38.975)
   pionC=new TF1("pionC","3.30*exp(-2.8*x)/pow(x,1.12)",1.,8);
   if(target==26.98 && angle==38.975)
-  pionC=new TF1("pionC","0.0144*exp(2.63*x)/pow(x,7.76)",1.,8);
+  pionC=new TF1("pionC","0.00749856*exp(3.35537*x)/pow(x,8.82817)",1.,8);
 
   if(target==1.01 && angle==32.975)
-  pionC=new TF1("pionC","1.0*exp(-1.94*x)/pow(x,1.83)",1.,8);
+  pionC=new TF1("pionC","8.55560*exp(-5.18789*x)/pow(x,-4.72197)",1.,8);
   if(target==2.01 && angle==32.975)
-  pionC=new TF1("pionC","0.959*exp(-1.28*x)/pow(x,2.9)",1.,8);
+  pionC=new TF1("pionC","2.64807*exp(-2.73395*x)/pow(x,0.0435966)",1.,8);
   if(target==12.01 && angle==32.975)
   pionC=new TF1("pionC","22.4*exp(-6.61*x)/pow(x,-7.88)",1.,8);
   if(target==26.98 && angle==32.975)
-  pionC=new TF1("pionC",".0809*exp(1.03*x)/pow(x,6.2)",1.,8);
+  pionC=new TF1("pionC","0.0807092*exp(1.04335*x)/pow(x,6.21548)",1.,8);
 
   if(target==1.01 && angle==28.99)
-  pionC=new TF1("pionC","0.406*exp(-0.396*x)/pow(x,4.49)",1.,8);
+  pionC=new TF1("pionC","0.393917*exp(-0.471598*x)/pow(x,4.18430)",1.,8);
   if(target==2.01 && angle==28.99)
-  pionC=new TF1("pionC",".961*exp(-1.24*x)/pow(x,2.42)",1.,8);
+  pionC=new TF1("pionC","1.25565*exp(-1.93012*x)/pow(x,0.761512)",1.,8);
   if(target==12.01 && angle==28.99)
-  pionC=new TF1("pionC",".672*exp(-.905*x)/pow(x,3.23)",1.,8);
+  pionC=new TF1("pionC","2.68261*exp(-3.80868*x)/pow(x,-3.27890)",1.,8);
   if(target==26.98 && angle==28.99)
-  pionC=new TF1("pionC","0.106*exp(.748*x)/pow(x,5.69)",1.,8);
+  pionC=new TF1("pionC","0.130350*exp(.306715*x)/pow(x,4.64607)",1.,8);
 
   if(target==1.01 && angle==24.98)
-  pionC=new TF1("pionC","0.613*exp(-.55*x)/pow(x,3.96)",1.,8);
+  pionC=new TF1("pionC","0.574647*exp(-0.373983*x)/pow(x,4.36376)",1.,8);
   if(target==2.01 && angle==24.98)
-  pionC=new TF1("pionC","1.49*exp(.383*x)/pow(x,6.87)",1.,8);
+  pionC=new TF1("pionC","1.50256*exp(-0.279117*x)/pow(x,5.03933)",1.,8);
   if(target==12.01 && angle==24.98)
-  pionC=new TF1("pionC",".307*exp(-1.02*x)/pow(x,1.69)",1.,8);
+  pionC=new TF1("pionC","0.284990*exp(-1.91949*x)/pow(x,-0.905901)",1.,8);
   if(target==26.98 && angle==24.98)
-  pionC=new TF1("pionC","0.394*exp(1.68*x)/pow(x,9.4)",1.,8);
+  pionC=new TF1("pionC","0.449401*exp(0.987751*x)/pow(x,7.56522)",1.,8);
 
 
   return pionC;

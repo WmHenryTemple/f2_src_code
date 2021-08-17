@@ -15,11 +15,16 @@ Double_t readReport(Int_t irun=2550, TString what="elec lt"){
   ifstream file;
 
   string word;
-  Double_t result;
+  Double_t result=-999999999;
   if(irun<2200){
-    froot = Form("/lustre/expphy/cache/hallc/E12-10-002/abishek/realpass-3b-hms-report/replay_hms_production_%d_-1.report",irun);}
+    froot = Form("/lustre/expphy/cache/hallc/E12-10-002/abishek/realpass-3d-hms-report/replay_hms_production_%d_-1.report",irun);
+  if(irun==1608)froot = Form("/lustre/expphy/cache/hallc/E12-10-002/abishek/realpass-3b-hms-report/replay_hms_production_%d_-1.report",irun);
+  }
+    //froot = Form("/lustre19/expphy/volatile/hallc/xem2/abishek/REPORT_OUTPUT/HMS/PRODUCTION/replay_hms_production_%d_-1.report",irun);}
+  //   froot = Form("/lustre/expphy/cache/hallc/E12-10-002/abishek/realpass-3b-hms-report/replay_hms_production_%d_-1.report",irun);}
   if(irun>2200){
-    froot = Form("/lustre/expphy/cache/hallc/E12-10-002/abishek/realpass-3c-shms-report/replay_shms_production_%d_-1.report",irun);}
+            froot = Form("/lustre/expphy/cache/hallc/E12-10-002/abishek/realpass-3d-shms-report/replay_shms_production_%d_-1.report",irun);}
+    //       froot = Form("/lustre/expphy/cache/hallc/E12-10-002/cmorean/pass4-shms-report/replay_shms_production_%d_-1.report",irun);}
   //  froot = Form("../reports/replay_shms_production_%d_-1.report",irun);
   //  froot = Form("reports/replay_shms_all_production_%d_200000.report",irun);
 
@@ -73,6 +78,11 @@ Double_t readReport(Int_t irun=2550, TString what="elec lt"){
     if (what=="energy"){
       while (file >> word){
 	if (word=="Energy"){file >> word>>result;
+	}}}
+    ///////////////////////////
+    if (what=="trig eff"){
+      while (file >> word){
+	if (word=="STOF:"){file >> result;
 	}}}
     ///////////////////////////
     if (what=="Spec Angle"){

@@ -1,5 +1,22 @@
-void getMomList(string angle, string (&arrs)[4], float (&arrf)[4]){
-  if(angle=="21")
+void getMomList(string angle, string (&arrs)[5], float (&arrf)[5], string arm="shms"){
+
+  if(arm=="hms" && angle=="21")
+    {
+      arrs[0]="3p3";
+      arrs[1]="4p0";
+      arrs[2]="4p5";
+      arrs[3]="5p1";
+      arrs[4]="5p7";
+      arrf[0]=3.3;
+      arrf[1]=4.0;
+      arrf[2]=4.5;
+      arrf[3]=5.1;
+      arrf[4]=5.7;
+    }
+
+  if(arm=="shms"){arrs[4]="";arrf[4]=0.0;}
+
+  if(arm=="shms" && angle=="21")
     {
       arrs[0]="2p7";
       arrs[1]="3p3";
@@ -11,7 +28,7 @@ void getMomList(string angle, string (&arrs)[4], float (&arrf)[4]){
       arrf[3]=5.1;
     }
 
-  if(angle=="25")
+  if(arm=="shms" && angle=="25")
     {
       arrs[0]="2p5";
       arrs[1]="3p0";
@@ -23,7 +40,7 @@ void getMomList(string angle, string (&arrs)[4], float (&arrf)[4]){
       arrf[3]=4.4;
     }
 
-  if(angle=="29")
+  if(arm=="shms" && angle=="29")
     {
       arrs[0]="2p0";
       arrs[1]="2p4";
@@ -35,7 +52,7 @@ void getMomList(string angle, string (&arrs)[4], float (&arrf)[4]){
       arrf[3]=3.7;
     }
 
-  if(angle=="33")
+  if(arm=="shms" && angle=="33")
     {
       arrs[0]="1p7";
       arrs[1]="2p1";
@@ -47,7 +64,7 @@ void getMomList(string angle, string (&arrs)[4], float (&arrf)[4]){
       arrf[3]=3.2;
     }
 
-  if(angle=="39")
+  if(arm=="shms" && angle=="39")
     {
       arrs[3]="2p5";
       arrs[2]="2p0";
