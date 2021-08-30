@@ -2,7 +2,7 @@
 #include "getKineUnc.cpp"
 //#include "getRadError.cpp"
 
-double getGlobalError(TGraph2D* grd,TGraph2D*  grh, Float_t ep, Double_t w2, Double_t thetac, Double_t hsec,Float_t deltah,string spec, string angle, string target, string mom, double xb, TGraph * g){
+double getGlobalError(TGraph2D* grd,TGraph2D*  grh, Float_t ep, Double_t w2, Double_t thetac, Double_t hsec,Float_t deltah,string spec, string angle, string target, string mom, double xb, TGraph * g, TH1F* hkinErr, int bin){
   double ang=21;
   double spec_flag=0.;
   if(spec=="shms")spec_flag=1.;
@@ -25,7 +25,8 @@ double getGlobalError(TGraph2D* grd,TGraph2D*  grh, Float_t ep, Double_t w2, Dou
   double density_err=.011;
   double cer_err=0.001;
   double boil_err=0.00;//(Include in density_err)
-  double kin_err=getKineUncRatio(grh, grd, ep, thetac);
+  //  double kin_err=getKineUncRatio(grh, grd, ep, thetac);
+  double kin_err=hkinErr->GetBinContent(bin);
   double csb_h_err=getCSBerr(thetac,hsec,deltah,tgt,0,grh);
   double csb_d_err=getCSBerr(thetac,hsec,deltah,tgt,0,grd);
   if(spec=="hms")csb_h_err=csb_h_err/.03;

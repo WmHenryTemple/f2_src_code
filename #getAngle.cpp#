@@ -8,5 +8,17 @@ Float_t getAngle(string angle="21",string spec="shms"){
   if(angle=="21"&&spec=="hms")thetac=20.995;
   if(angle=="59")thetac=58.98;
 
+  if(angle=="21m"&&spec=="shms")thetac=20.535;
+  if(angle=="21p"&&spec=="shms")thetac=21.535;
+  ////****  Beam is not along z ******
+  cout << "Correcting central angle for beam angle"<<endl;
+  cout << "Before: "<<thetac<<endl;
+  Float_t beamTheta=0.0;
+  //    beamTheta=-.00045; //shooting beam right .45mr
+  if(spec=="hms")beamTheta*=-1;
+  thetac+=beamTheta*180./TMath::Pi();
+  cout << "After: "<<thetac<<endl;
+  //////////////////////////////////////
+
   return thetac;
 }
