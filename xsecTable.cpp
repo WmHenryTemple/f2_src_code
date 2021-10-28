@@ -1,14 +1,20 @@
-void xsecTable(TGraphErrors *gcx, TGraphErrors *grerr, Double_t thetac, string kin, string target){
+void xsecTable(TGraphErrors *gcxa, TGraphErrors *gcx, TGraphErrors *grerr, TGraphErrors *gdm, Double_t thetac, string kin, string target){
   ofstream outFile;
   if(target=="h")outFile.open("xsec_H_Table.txt",ios::app | ios::out );
   if(target=="d")outFile.open("xsec_D_Table.txt",ios::app | ios::out );
   if(target=="r")outFile.open("xsec_R_Table.txt",ios::app | ios::out );
-
+  int offset=-10;
+  if(thetac-20.995<.01)offset=-6;
   for(int i=0; i < gcx->GetN(); i++){
-    double xb, xsec, perr, gerr, dum;
+    double xb, xsec, perr, gerr, dum, delta, rat, raterr, staterr;
+    delta=i+offset+0.5;
     gcx->GetPoint(i,xb,xsec);
-    perr=gcx->GetErrorY(i);
-    gerr=grerr->GetErrorY(i);
+    gdm->GetPoint(i,dum,rat);
+
+    raterr=gdm->GetErrorY(i)/xsec;
+    perr=gcx->GetErrorY(i)/xsec;
+    gerr=grerr->GetErrorY(i)/xsec;
+    staterr=gcxa->GetErrorY(i)/xsec;
 
     Double_t alpha = 1./137.036;
     Double_t ebeam=10.602;
@@ -30,7 +36,7 @@ void xsecTable(TGraphErrors *gcx, TGraphErrors *grerr, Double_t thetac, string k
     //    gerr=perr/xsec*100;
     //    cout <<spec<<angle<<target<<pset[0]<<"\t";
     cout << kin << "\t"<< ebeam <<"\t"<< ep <<"\t"<< thetac <<"\t"<<q2<<"\t";
-    cout << w2 <<"\t"<< xb<< "\t"<<xsec <<"\t"<< perr <<"\t"<<gerr<<endl;
+    cout << w2 <<"\t"<< xb<< "\t"<<xsec <<"\t"<< perr <<"\t"<<gerr<< "\t"<< staterr<< endl;
 
     /*
     // This format matches resdata but reading with fortran proved challenging
@@ -43,6 +49,7 @@ void xsecTable(TGraphErrors *gcx, TGraphErrors *grerr, Double_t thetac, string k
     */
 
     outFile << fixed << setprecision(5);
+    //    outFile << setw(10) << kin;
     outFile << setw(10) << ebeam;
     outFile << setw(10) << ep;
     outFile << setw(10) << thetac;
@@ -53,7 +60,13 @@ void xsecTable(TGraphErrors *gcx, TGraphErrors *grerr, Double_t thetac, string k
     outFile << setw(12) << scientific<<flux<<fixed;
     outFile << setw(10) << xb;
     outFile << setw(10) << xsec;
+    outFile << setw(10) << staterr;
     outFile << setw(10) << perr;
+    outFile << setw(10) << gerr;
+    outFile << setw(10) << delta;
+    outFile << setw(10) << rat;
+    outFile << setw(10) << raterr;
+
     outFile<<endl;
 
 
