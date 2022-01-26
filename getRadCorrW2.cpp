@@ -10,7 +10,7 @@ using namespace std;
 //choice 2 ==rci
 //choice 3 ==rad
 
-TGraph2D* getRadCorrW2(string target="h", Int_t choice=1, string spec="shms", string version="v0.995"){
+TGraph2D* getRadCorrW2(string target="h", Int_t choice=1, string spec="shms", string version="v996t2"){
   TGraph2D *graph;
   Float_t result=0;
   TString fname;
@@ -18,10 +18,19 @@ TGraph2D* getRadCorrW2(string target="h", Int_t choice=1, string spec="shms", st
   string word;
 
   fname = Form("src/model/abel/%s/%s_%s10.6_all.dat_inel_f1f220",version.c_str(),spec.c_str(),target.c_str());//target = c,d,h,
+
+  if(version=="newest")
+    {  
+      fname = Form("src/model/abel/%s_%s10.6_all.dat_inel_f1f220",spec.c_str(),target.c_str());//target = c,d,h,
+    }
+
+
   if(version=="v0.995")
     {  
       fname = Form("src/model/abel/%s/%s_%s10.6_all.dat_inel_f1f221",version.c_str(),spec.c_str(),target.c_str());//target = c,d,h,
     }
+
+
 
   if(version=="f1f209")
     {  

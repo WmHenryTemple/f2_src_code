@@ -13,7 +13,7 @@ TGraphErrors* getJAM(double angle=21.){
   TString fname;
   ifstream file;
   string word;
-  fname="src/moreModels/JAM4f2.txt";
+  fname="src/moreModels/JAM4f2_new.txt";
   file.open(fname);
   cout <<" Is the File open?"<<  file.is_open()<<endl;
   if(file.is_open()==1)
@@ -63,8 +63,11 @@ TGraphErrors* getJAM(double angle=21.){
 	      ye.push_back(err[i]);	      
 	    }
 	}
-      graph=new TGraphErrors(xx.size(),&xx[0],&yy[0],0,&ye[0]);
-
+      //      graph=new TGraphErrors(xx.size(),&xx[0],&yy[0],0,&ye[0]);
+      graph=new TGraphErrors(xx.size(),&xx[0],&yy[0],0,0);
+      graph->SetMarkerStyle(33);
+      graph->SetMarkerColor(kBlack);
+      graph->SetLineColor(kBlack);
     }//if file is open
   file.close();
   return graph;
