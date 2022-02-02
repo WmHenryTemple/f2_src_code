@@ -17,22 +17,34 @@ double getGlobalError(TGraph2D* grd,TGraph2D*  grh, Float_t ep, Double_t w2, Dou
   ofstream ofile;
   ofile.open("globErr.txt",ios::app | ios::out );
 
-  double tgt=1.01;
-  if(target=="d")tgt=2.01;
+  //Pion Contamination Error
 
-  double pion_err=0.0014;
-  if(angle=="39")pion_err=.0028;
-  double density_err=.011;
-  double cer_err=0.001;
-  //  double boil_err=0.00;//(Include in density_err)
-  //  double kin_err=getKineUncRatio(grh, grd, ep, thetac);
-  double kin_err=hkinErr->GetBinContent(bin);
-  //  kin_err=0;
-  double csb_h_err=getCSBerr(thetac,hsec,deltah,tgt,0,grh);
-  double csb_d_err=getCSBerr(thetac,hsec,deltah,tgt,0,grd);
+
+  double pion_err=0.001;
+  if(angle=="39")pion_err=.002;
+  double density_err=.0075;
+  double cer_err=0.003;
+
+  if(target=="r"){
+    pion_err=0.0014;
+    if(angle=="39")pion_err=.0028;    
+    density_err=0.011;
+    cer_err=0.001;
+  }
+  
+
+  double kin_err=hkinErr->GetBinContent(bin);//can handle h Vs d vs r
+
+  double csb_h_err=getCSBerr(thetac,hsec,deltah,1.01,0,grh);
+  double csb_d_err=getCSBerr(thetac,hsec,deltah,2.01,0,grd);
   if(spec=="hms")csb_h_err=csb_h_err/.03;
   if(spec=="hms")csb_d_err=csb_d_err/.03;
-  double csb_err=sqrt(pow(csb_h_err,2)+pow(csb_d_err,2));
+  double csb_err=0;
+  if(target=="r")csb_err=sqrt(pow(csb_h_err,2)+pow(csb_d_err,2));
+  if(target=="h")csb_err=csb_h_err;
+  if(target=="d")csb_err=csb_d_err;  
+
+
   double acc_err=0.0018/pow(w2-1.1,1.13);
   double rad_err= g->Eval(xb)/100.;
 

@@ -182,7 +182,10 @@ TGraph* getRadError(double angle=21, string target="h"){
     gRadp2d->GetPoint(i,x2,y2);
     double val1=abs(y1);
     double val2=abs(y2);
-    double total=sqrt(val1*val1+val2*val2+0.005*0.005);
+    double total;// error on model + method
+    if(target=="h")=sqrt(val1*val1+0.01*0.01);
+    if(target=="d")=sqrt(val2*val2+0.01*0.01);
+    if(target=="r")=sqrt(val1*val1+val2*val2+0.005*0.005);    
     //    cout << y1 <<"\t"<<  y2 <<"\t"<< total << endl;
     sx.push_back(x1);
     sy.push_back(total*100);
