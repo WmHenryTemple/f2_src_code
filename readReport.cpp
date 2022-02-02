@@ -23,7 +23,7 @@ Double_t readReport(Int_t irun=2550, TString what="elec lt"){
     //froot = Form("/lustre19/expphy/volatile/hallc/xem2/abishek/REPORT_OUTPUT/HMS/PRODUCTION/replay_hms_production_%d_-1.report",irun);}
   //   froot = Form("/lustre/expphy/cache/hallc/E12-10-002/abishek/realpass-3b-hms-report/replay_hms_production_%d_-1.report",irun);}
   if(irun>2200){
-            froot = Form("/lustre/expphy/cache/hallc/E12-10-002/abishek/realpass-3d-shms-report/replay_shms_production_%d_-1.report",irun);}
+            froot = Form("/lustre/expphy/cache/hallc/E12-10-002/abishek/realpass-3e-shms-report/replay_shms_production_%d_-1.report",irun);}
     //       froot = Form("/lustre/expphy/cache/hallc/E12-10-002/cmorean/pass4-shms-report/replay_shms_production_%d_-1.report",irun);}
   //  froot = Form("../reports/replay_shms_production_%d_-1.report",irun);
   //  froot = Form("reports/replay_shms_all_production_%d_200000.report",irun);
