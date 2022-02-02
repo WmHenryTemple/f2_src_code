@@ -50,7 +50,7 @@ TGraphErrors* getJAM(double angle=21.){
       vector <double> xx,yy, ye;
       for (Int_t i=0;i<size-1;i++)
 	{
-	  if(th[i]-angle<.25)
+	  if(abs(th[i]-angle)<.25)
 	    {
 	      cout << x[i]<<"\t";
 	      cout << q2[i]<<"\t";
