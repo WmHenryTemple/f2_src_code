@@ -3,7 +3,7 @@
 //#include "getRadError.cpp"
 
 double getGlobalError(TGraph2D* grd,TGraph2D*  grh, Float_t ep, Double_t w2, Double_t thetac, Double_t hsec,Float_t deltah,string spec, string angle, string target, string mom, double xb, TGraph * g, TH1F* hkinErr, int bin, double lte, double qerr, double boil_err){
-  double ang=21;
+  double ang=21; 
   double spec_flag=0.;
   if(spec=="shms")spec_flag=1.;
 
@@ -33,7 +33,16 @@ double getGlobalError(TGraph2D* grd,TGraph2D*  grh, Float_t ep, Double_t w2, Dou
   if(spec=="hms")csb_h_err=csb_h_err/.03;
   if(spec=="hms")csb_d_err=csb_d_err/.03;
   double csb_err=sqrt(pow(csb_h_err,2)+pow(csb_d_err,2));
-  double acc_err=0.0018/pow(w2-1.1,1.13);
+
+  double acc_err=0;
+  if(spec_flag==1)
+    {
+      if(target=="r")acc_err=0.0018/pow(w2-1.1,1.13);
+      if(target=="h")acc_err=0.0003902+deltah*-5.019E-5+pow(deltah,2)*1.671E-6+pow(deltah,3)*5.811E-6+pow(deltah,4)*-2.572E-7;
+      if(target=="d")acc_err=0.0003619+deltah*-6.701E-5+pow(deltah,2)*1.919E-7+pow(deltah,3)*6.077E-6+pow(deltah,4)*-2.62E-7;
+      //0.0003902+x*-5.019E-5+pow(x,2)*1.671E-6+pow(x,3)*5.811E-6+pow(x,4)*-2.572E-7;
+      //0.0003619+x*-6.701E-5+pow(x,2)*1.919E-7+pow(x,3)*6.077E-6+pow(x,4)*-2.62E-7;
+    }
   double rad_err= g->Eval(xb)/100.;
 
   double result = sqrt(pow(pion_err,2) + pow(density_err,2) + pow(cer_err,2) + pow(boil_err,2) + pow(kin_err,2) + pow(csb_err,2) + pow(acc_err,2) + pow(rad_err,2)+pow(lte,2));
