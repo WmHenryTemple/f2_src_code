@@ -3,19 +3,15 @@
 //#include "getRadError.cpp"
 
 double getGlobalError(TGraph2D* grd,TGraph2D*  grh, Float_t ep, Double_t w2, Double_t thetac, Double_t hsec,Float_t deltah,string spec, string angle, string target, string mom, double xb, TGraph * g, TH1F* hkinErr, int bin, double lte, double qerr, double boil_err){
+
   double ang=21; 
   double spec_flag=0.;
   if(spec=="shms")spec_flag=1.;
 
   string kin=target+angle+"deg"+mom;
-  if(angle=="25")ang=25;
-  if(angle=="29")ang=29;
-  if(angle=="33")ang=33;
-  if(angle=="39")ang=39;
-  //  TGraph *g=getRadError(ang, target);
 
-  ofstream ofile;
-  ofile.open("globErr.txt",ios::app | ios::out );
+  ofstream outFile;
+  outFile.open("globErr.txt",ios::app | ios::out );
 
   //Pion Contamination Error
 
@@ -39,23 +35,24 @@ double getGlobalError(TGraph2D* grd,TGraph2D*  grh, Float_t ep, Double_t w2, Dou
   double csb_d_err=getCSBerr(thetac,hsec,deltah,2.01,0,grd);
   if(spec=="hms")csb_h_err=csb_h_err/.03;
   if(spec=="hms")csb_d_err=csb_d_err/.03;
+  double csb_err=0;
+  if(target=="r")csb_err=sqrt(pow(csb_h_err,2)+pow(csb_d_err,2));
+  if(target=="h")csb_err=csb_h_err;
+  if(target=="d")csb_err=csb_d_err;  
 
-  double csb_err=sqrt(pow(csb_h_err,2)+pow(csb_d_err,2));
 
-  double acc_err=0;
+
+  double acc_err=0.003;
   if(spec_flag==1)
     {
       if(target=="r")acc_err=0.0018/pow(w2-1.1,1.13);
       if(target=="h")acc_err=0.0003902+deltah*-5.019E-5+pow(deltah,2)*1.671E-6+pow(deltah,3)*5.811E-6+pow(deltah,4)*-2.572E-7;
       if(target=="d")acc_err=0.0003619+deltah*-6.701E-5+pow(deltah,2)*1.919E-7+pow(deltah,3)*6.077E-6+pow(deltah,4)*-2.62E-7;
+      acc_err=abs(acc_err);
       //0.0003902+x*-5.019E-5+pow(x,2)*1.671E-6+pow(x,3)*5.811E-6+pow(x,4)*-2.572E-7;
       //0.0003619+x*-6.701E-5+pow(x,2)*1.919E-7+pow(x,3)*6.077E-6+pow(x,4)*-2.62E-7;
     }
 
-  double csb_err=0;
-  if(target=="r")csb_err=sqrt(pow(csb_h_err,2)+pow(csb_d_err,2));
-  if(target=="h")csb_err=csb_h_err;
-  if(target=="d")csb_err=csb_d_err;  
 
   double rad_err= g->Eval(xb)/100.;
 
@@ -63,9 +60,25 @@ double getGlobalError(TGraph2D* grd,TGraph2D*  grh, Float_t ep, Double_t w2, Dou
 
   cout <<  pion_err  <<"\t"<<density_err<<"\t"<<cer_err<<"\t"<<boil_err<<"\t"<<kin_err<<"\t"<<csb_err<<"\t"<<acc_err<<"\t" <<rad_err<<"\t"<< lte <<"\t"<<qerr<<"\t"<<boil_err<<"\t"<<result << endl;
 
-  ofile << spec_flag <<"\t"<<ang<<"\t"<<xb<<"\t";
-  ofile <<  pion_err  <<"\t"<<density_err<<"\t"<<cer_err<<"\t"<<boil_err<<"\t"<<kin_err<<"\t"<<csb_err<<"\t"<<acc_err<<"\t"<<rad_err<<"\t"<< lte <<"\t"<<qerr<<"\t"<<boil_err<<"\t"<<result << endl;
+      outFile << fixed << setprecision(5);
+      //    outFile << setw(10) << kin;
+      outFile << setw(10) << spec_flag;
+      outFile << setw(10) << kin;
+      outFile << setw(10) << xb;
+      outFile << setw(10) << pion_err;
+      outFile << setw(10) << density_err;
+      outFile << setw(10) << cer_err;
+      outFile << setw(10) << boil_err;
+      outFile << setw(10) << kin_err;
+      outFile << setw(10) << csb_err;
+      outFile << setw(10) << acc_err;
+      outFile << setw(10) << rad_err;
+      outFile << setw(10) << lte;
+      outFile << setw(10) << qerr;
+      outFile << setw(10) << boil_err;
+      outFile << setw(10) << result;
+      outFile<<endl;
 
-  ofile.close();
+  outFile.close();
   return result;
 }  

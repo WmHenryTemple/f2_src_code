@@ -15,9 +15,10 @@ void xsecTable(TGraphErrors *gcxa, TGraphErrors *gcx, TGraphErrors *grerr, TGrap
     double xb, xsec, perr, gerr, dum, delta, rat, raterr, staterr;
 
   int offset=-10;
+
     if(gcx->GetN()<11){
-      offset=-8;
-      if(thetac-20.995<.01)offset=-5;
+      offset=-5;
+      if(thetac-20.995<.01)offset=-6;
       delta=3*i+offset+0.5;
 
     }
