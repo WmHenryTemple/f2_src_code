@@ -56,7 +56,7 @@ double getGlobalError(TGraph2D* grd,TGraph2D*  grh, Float_t ep, Double_t w2, Dou
 
   double rad_err= g->Eval(xb)/100.;
 
-  double result = sqrt(pow(pion_err,2) + pow(density_err,2) + pow(cer_err,2) + pow(boil_err,2) + pow(kin_err,2) + pow(csb_err,2) + pow(acc_err,2) + pow(rad_err,2)+pow(lte,2));
+  double result = sqrt(pow(pion_err,2) + pow(density_err,2) + pow(cer_err,2)  + pow(kin_err,2) + pow(csb_err,2) + pow(acc_err,2) + pow(rad_err,2)+pow(lte,2));
 
   cout <<  pion_err  <<"\t"<<density_err<<"\t"<<cer_err<<"\t"<<boil_err<<"\t"<<kin_err<<"\t"<<csb_err<<"\t"<<acc_err<<"\t" <<rad_err<<"\t"<< lte <<"\t"<<qerr<<"\t"<<boil_err<<"\t"<<result << endl;
 
