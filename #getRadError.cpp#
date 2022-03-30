@@ -1,26 +1,22 @@
 #include <iostream>
+
 #include <iomanip>
 #include <fstream>
 
 using namespace std;
 
-//TGraph* getGraph(string title="nameMe", double angle=21,  string target="h", Int_t choice=1){
-TGraph* getGraph(string title="nameMe", double angle=21,  string target="h", Int_t choice=1, ifstream file){
-
-
+TGraph* getGraph(string title="nameMe", double angle=21,  string target="h", Int_t choice=1){
+  TString fname;
+  ifstream file;
   string word;
   double ang=0.0;
   double temp=0.0;
-  /*
-  ifstream file;
-  TString fname;
   if(target=="c")fname = "src/model/abel/externals/externals_c_f1f220.out";//target = c,d,h,
   if(target=="d")fname = "src/model/abel/externals/externals_d_f1f220.out";//target = c,d,h,
   if(target=="h")fname = "src/model/abel/externals/externals_h_f1f220.out";//target = c,d,h,
   //  fname = Form("model/21deg%s18.out",target.c_str()); //target =h2cryo,... Dave's table
   file.open(fname);
-  cout <<" Is the File open?"<<  file.is_open()<<endl;
-  */
+  //  cout <<" Is the File open?"<<  file.is_open()<<endl;
 
       vector<Double_t> eBeam;
       vector<Double_t> ePrime;
@@ -104,7 +100,7 @@ TGraph* getGraph(string title="nameMe", double angle=21,  string target="h", Int
 
 
 	}
-      cout <<"Number of rowa used: "<< eBeam.size() << endl;
+      //      cout <<"Number of rowa used: "<< eBeam.size() << endl;
       xx=x;
       if(choice==1)yy=born;
       if(choice==2)yy=bornInc;
@@ -187,7 +183,10 @@ TGraph* getRadError(double angle=21, string target="h"){
     gRadp2d->GetPoint(i,x2,y2);
     double val1=abs(y1);
     double val2=abs(y2);
-    double total=sqrt(val1*val1+val2*val2+0.005*0.005);
+    double total;// error on model + method
+    if(target=="h")total=sqrt(val1*val1+0.01*0.01);
+    if(target=="d")total=sqrt(val2*val2+0.01*0.01);
+    if(target=="r")total=sqrt(val1*val1+val2*val2+0.005*0.005);    
     //    cout << y1 <<"\t"<<  y2 <<"\t"<< total << endl;
     sx.push_back(x1);
     sy.push_back(total*100);

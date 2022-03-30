@@ -43,7 +43,7 @@ double getCharge(string target="h", string angle="21", string pcent="3p3"){
 
     if(strncmp(theta,angle.c_str(),2)==0 && strncmp(tgt,target.c_str(),1)==0&& strncmp(ps2,"-1",1)!=0){
       if(strncmp(mom,pcent.c_str(),3)==0 || strncmp("all",pcent.c_str(),3)==0){
-	cout << run <<"\t"<< readReport(run,"BCM4C charge") << endl;
+	//	cout << run <<"\t"<< readReport(run,"BCM4C charge") << endl;
 	totalCharge += readReport(run,"BCM4C charge");
       }
     }

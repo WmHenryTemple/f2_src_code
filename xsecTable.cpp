@@ -11,7 +11,7 @@ void xsecTable(TGraphErrors *gcxa, TGraphErrors *gcx, TGraphErrors *grerr, TGrap
 
 
   for(int i=0; i < gcx->GetN(); i++){
-    cout << "There are " << gcx->GetN()<<"points"<<endl;
+    //    cout << "There are " << gcx->GetN()<<"points"<<endl;
     double xb, xsec, perr, gerr, dum, delta, rat, raterr, staterr;
 
   int offset=-10;
@@ -30,7 +30,7 @@ void xsecTable(TGraphErrors *gcxa, TGraphErrors *gcx, TGraphErrors *grerr, TGrap
     gcx->GetPoint(i,xb,xsec);
     gdm->GetPoint(i,dum,rat);
 
-    raterr=gdm->GetErrorY(i)/xsec;
+    raterr=gdm->GetErrorY(i)/rat;
     perr=gcx->GetErrorY(i)/xsec;
     gerr=grerr->GetErrorY(i)/xsec;
     staterr=gcxa->GetErrorY(i)/xsec;
@@ -54,8 +54,8 @@ void xsecTable(TGraphErrors *gcxa, TGraphErrors *gcx, TGraphErrors *grerr, TGrap
 
     //    gerr=perr/xsec*100;
     //    cout <<spec<<angle<<target<<pset[0]<<"\t";
-    cout << kin << "\t"<< ebeam <<"\t"<< ep <<"\t"<< thetac <<"\t"<<q2<<"\t";
-    cout << w2 <<"\t"<< xb<< "\t"<<xsec <<"\t"<< perr <<"\t"<<gerr<< "\t"<< staterr<< endl;
+    //    cout << kin << "\t"<< ebeam <<"\t"<< ep <<"\t"<< thetac <<"\t"<<q2<<"\t";
+    //    cout << w2 <<"\t"<< xb<< "\t"<<xsec <<"\t"<< perr <<"\t"<<gerr<< "\t"<< staterr<< endl;
 
 
     /*

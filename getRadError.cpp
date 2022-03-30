@@ -15,7 +15,7 @@ TGraph* getGraph(string title="nameMe", double angle=21,  string target="h", Int
   if(target=="h")fname = "src/model/abel/externals/externals_h_f1f220.out";//target = c,d,h,
   //  fname = Form("model/21deg%s18.out",target.c_str()); //target =h2cryo,... Dave's table
   file.open(fname);
-  cout <<" Is the File open?"<<  file.is_open()<<endl;
+  //  cout <<" Is the File open?"<<  file.is_open()<<endl;
 
       vector<Double_t> eBeam;
       vector<Double_t> ePrime;
@@ -99,7 +99,7 @@ TGraph* getGraph(string title="nameMe", double angle=21,  string target="h", Int
 
 
 	}
-      cout <<"Number of rowa used: "<< eBeam.size() << endl;
+      //      cout <<"Number of rowa used: "<< eBeam.size() << endl;
       xx=x;
       if(choice==1)yy=born;
       if(choice==2)yy=bornInc;

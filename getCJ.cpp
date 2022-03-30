@@ -7,7 +7,7 @@
 
 using namespace std;
 
-TGraph* getCJ( string choice="25"){
+TGraph* getCJ( string choice="25", int what = 0){
   TGraph* graph;
   Float_t result=0;
   TString fname;
@@ -65,7 +65,9 @@ TGraph* getCJ( string choice="25"){
 	  if(x[i]<0.94)
 	    {
 	      xx.push_back(x[i]);
-	      yy.push_back(f2dp[i]);
+	      if(what==0)yy.push_back(f2dp[i]);
+	      if(what==1)yy.push_back(f2p[i]);
+	      if(what==2)yy.push_back(f2d[i]);
 	    }
 	}
       graph=new TGraph(xx.size(),&xx[0],&yy[0]);

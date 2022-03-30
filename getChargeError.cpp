@@ -62,7 +62,7 @@ double getChargeError(char const *angle="39", char const *target="h", char const
     if(strncmp(theta,angle,2)==0 && strncmp(tgt,target,1)==0&& strncmp(ps2,"-1",1)!=0){
       if(strncmp(mom,pcent,3)==0 || strncmp("all",pcent,3)==0){
 	string fname=Form("%s_%s%sdeg%s_%d",spec,tgt,angle,mom,run);
-	cout << run <<"\t"<< fname << endl; 
+	//	cout << run <<"\t"<< fname << endl; 
 	cntr++;
       }
     }

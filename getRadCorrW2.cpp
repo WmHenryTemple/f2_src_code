@@ -10,7 +10,9 @@ using namespace std;
 //choice 2 ==rci
 //choice 3 ==rad
 
-TGraph2D* getRadCorrW2(string target="h", Int_t choice=1, string spec="shms", string version="v996t2"){
+//TGraph2D* getRadCorrW2(string target="h", Int_t choice=1, string spec="shms", string version="v0.990"){
+//TGraph2D* getRadCorrW2(string target="h", Int_t choice=1, string spec="shms", string version="v996t2"){
+TGraph2D* getRadCorrW2(string target="h", Int_t choice=1, string spec="shms", string version="v0.995"){
   TGraph2D *graph;
   Float_t result=0;
   TString fname;
@@ -30,6 +32,11 @@ TGraph2D* getRadCorrW2(string target="h", Int_t choice=1, string spec="shms", st
       fname = Form("src/model/abel/%s/%s_%s10.6_all.dat_inel_f1f221",version.c_str(),spec.c_str(),target.c_str());//target = c,d,h,
     }
 
+  if(version=="v0.990")
+    {  
+      fname = Form("src/model/abel/%s/%s_%s10.6_all.dat_inel_f1f220",version.c_str(),spec.c_str(),target.c_str());//target = c,d,h,
+    }
+
 
 
   if(version=="f1f209")
@@ -40,13 +47,13 @@ TGraph2D* getRadCorrW2(string target="h", Int_t choice=1, string spec="shms", st
 
   if(version=="v996t2")
     {  
-      fname = Form("src/model/abel/v0.996t2/shms_%s10.6_all.dat_inel_f1f221",target.c_str());//target = c,d,h,
+      fname = Form("src/model/abel/v0.996t2/%s_%s10.6_all.dat_inel_f1f221",spec.c_str(),target.c_str());//target = c,d,h,
     }
 
 
   file.open(fname);
 
-  cout <<" Is the File open?"<<  file.is_open()<<endl;
+  //  cout <<" Is the File open?"<<  file.is_open()<<endl;
     if(file.is_open()==1)
       {
       Int_t nlines=0;

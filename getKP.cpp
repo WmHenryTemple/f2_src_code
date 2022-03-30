@@ -69,7 +69,7 @@ TGraph* getKP(string what= "dis/hybrid/aold/akp17", string angle="21"){
 	      file >> q2[i];
 	      file >> w2[i];
 	      file >> dop[i];
-	      cout << "Loading arrays "<< x[i] <<"\t"<< q2[i] <<"\t"<< w2[i]<<endl;
+	      //	      cout << "Loading arrays "<< x[i] <<"\t"<< q2[i] <<"\t"<< w2[i]<<endl;
 	    }
 	}
 
@@ -84,7 +84,7 @@ TGraph* getKP(string what= "dis/hybrid/aold/akp17", string angle="21"){
 	      file >> w2[i];
 	      file >> x[i];
 	      file >> dop[i];
-	      cout << "Loading arrays "<< x[i] <<"\t"<< q2[i] <<"\t"<< w2[i]<<endl;
+	      //	      cout << "Loading arrays "<< x[i] <<"\t"<< q2[i] <<"\t"<< w2[i]<<endl;
 	    }
 	}
       Double_t eb=10.602;
@@ -103,7 +103,7 @@ TGraph* getKP(string what= "dis/hybrid/aold/akp17", string angle="21"){
 	      Double_t sin2=q2[i]/(4*eb*ep);
 	      theta = asin(sqrt(sin2))*2*180/TMath::Pi();
 	      //	  cout << ep <<"\t"<<theta<<endl;
-	      cout <<"Calculating....."<< x[i] <<"\t"<< q2[i] <<"\t"<< w2[i]<<"\t"<<ep <<"\t"<<theta<<endl;
+	      //	      cout <<"Calculating....."<< x[i] <<"\t"<< q2[i] <<"\t"<< w2[i]<<"\t"<<ep <<"\t"<<theta<<endl;
 	    }
 	  else theta=th[i];
 	  if(abs(theta-thetac)<1. && x[i]<0.94)

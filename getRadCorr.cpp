@@ -91,6 +91,11 @@ TGraph2D* getRadCorr(string target="c", Int_t choice=1,string spec="shms"){
 	  if(choice==1)y[i]=born[i];
 	  if(choice==2)y[i]=ratio[i];
 	  if(choice==3)y[i]=rad[i];
+	  if(choice==4)y[i]=bornInc[i];
+	  if(choice==5)y[i]=bornQe[i];
+	  if(choice==6)y[i]=radEl[i];
+	  if(choice==7)y[i]=radQe[i];
+	  if(choice==8)y[i]=radDis[i];
 
 
 	}
