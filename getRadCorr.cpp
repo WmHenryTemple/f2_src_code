@@ -15,18 +15,18 @@ TGraph2D* getRadCorr(string target="c", Int_t choice=1,string spec="shms"){
   string word;
   //  if(spec=="shms")
     {
-      if(target=="c")fname = "src/model/abel/externals/externals_c_f1f220.out";//target = c,d,h,
-      if(target=="d")fname = "src/model/abel/externals/externals_d_f1f220.out";//target = c,d,h,
-      if(target=="h")fname = "src/model/abel/externals/externals_h_f1f220.out";//target = c,d,h,
+      if(target=="c")fname = "src/model/abel/externals/v0.996t2/externals_c_f1f221.out";//target = c,d,h,
+      if(target=="d")fname = "src/model/abel/externals/v0.996t2/externals_d_f1f221.out";//target = c,d,h,
+      if(target=="h")fname = "src/model/abel/externals/v0.996t2/externals_h_f1f221.out";//target = c,d,h,
     }
-    /*
+
   if(spec=="hms")
     {
       if(target=="c")fname = "src/model/abel/hms_c10.6_all.dat_inel_f1f220";//target = c,d,h,
       if(target=="d")fname = "src/model/abel/hms_d10.6_all.dat_inel_f1f220";//target = c,d,h,
       if(target=="h")fname = "src/model/abel/hms_h10.6_all.dat_inel_f1f220";//target = c,d,h,
     }
-    */
+
   //  fname = Form("model/21deg%s18.out",target.c_str()); //target =h2cryo,... Dave's table
   file.open(fname);
   cout <<" Is the File open?"<<  file.is_open()<<endl;
