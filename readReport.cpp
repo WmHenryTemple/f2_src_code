@@ -19,6 +19,7 @@ Double_t readReport(Int_t irun=2550, TString what="elec lt"){
   if(irun<2200){
     froot = Form("/lustre/expphy/cache/hallc/E12-10-002/abishek/realpass-3d-hms-report/replay_hms_production_%d_-1.report",irun);
   if(irun==1608)froot = Form("/lustre/expphy/cache/hallc/E12-10-002/abishek/realpass-3b-hms-report/replay_hms_production_%d_-1.report",irun);
+  //    froot = Form("/group/shms/wmhenry/f2-emc/REPORT_OUTPUT/HMS/PRODUCTION/replay_hms_production_%d_-1.report",irun);
   }
     //froot = Form("/lustre19/expphy/volatile/hallc/xem2/abishek/REPORT_OUTPUT/HMS/PRODUCTION/replay_hms_production_%d_-1.report",irun);}
   //   froot = Form("/lustre/expphy/cache/hallc/E12-10-002/abishek/realpass-3b-hms-report/replay_hms_production_%d_-1.report",irun);}
@@ -110,6 +111,57 @@ Double_t readReport(Int_t irun=2550, TString what="elec lt"){
       if (what=="BCM4C cut current"){
 	while (file >> word){
 	  if (word=="BCM4C"){
+	    file >> word; 
+	    if (word=="Beam"){ 
+	      file >> word; 
+	      if (word=="Cut"){ 
+		file >> word; 
+		if (word=="Current:"){ 
+		  file >> result; 		
+		}}}}}}
+    ///////////////////////////
+      if (what=="BCM4B cut current"){
+	while (file >> word){
+	  if (word=="BCM4B"){
+	    file >> word; 
+	    if (word=="Beam"){ 
+	      file >> word; 
+	      if (word=="Cut"){ 
+		file >> word; 
+		if (word=="Current:"){ 
+		  file >> result; 		
+		}}}}}}
+
+    ///////////////////////////
+      if (what=="Unser cut current"){
+	while (file >> word){
+	  if (word=="Unser"){
+	    file >> word; 
+	    if (word=="Beam"){ 
+	      file >> word; 
+	      if (word=="Cut"){ 
+		file >> word; 
+		if (word=="Current:"){ 
+		  file >> result; 		
+		}}}}}}
+    ///////////////////////////////////
+    ///////////////////////////
+      if (what=="BCM4B cut current"){
+	while (file >> word){
+	  if (word=="BCM4B"){
+	    file >> word; 
+	    if (word=="Beam"){ 
+	      file >> word; 
+	      if (word=="Cut"){ 
+		file >> word; 
+		if (word=="Current:"){ 
+		  file >> result; 		
+		}}}}}}
+    ///////////////////////////////////
+    ///////////////////////////
+      if (what=="BCM4A cut current"){
+	while (file >> word){
+	  if (word=="BCM4A"){
 	    file >> word; 
 	    if (word=="Beam"){ 
 	      file >> word; 

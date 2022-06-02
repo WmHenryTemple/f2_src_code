@@ -14,7 +14,7 @@ TGraphErrors* readIt(){
 while (1) {
   ncols = fscanf(fp,"%d %d %f %f %f %f %f %f %f %f %f", &dum1, &dum2, &xb, &q2, &rat, &dst, &dsr, &dn1, &dn2, &stat, &sys); 
   if (ncols == 0) break;
-  cout << ncols << endl;
+  //  cout << ncols << endl;
   //  if(q2 < 5.2 && q2 > 3.39 && xb > .2 && xb < .4){
   if(q2 > 3.39 && q2 < 8.25){
     x.push_back(xb);

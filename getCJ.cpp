@@ -57,7 +57,7 @@ TGraph* getCJ( string choice="25", int what = 0){
 	  file >> f2d[i];
 	  for(Int_t i=0; i<8; i++)file >> word;
 	  f2dp[i]=f2d[i]/f2p[i];
-	  cout << ep[i] << "\t" << f2dp[i] << endl ;
+	  //	  cout << ep[i] << "\t" << f2dp[i] << endl ;
 	}
       vector <double> xx,yy;
       for (Int_t i=0;i<size-1;i++)

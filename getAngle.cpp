@@ -14,9 +14,9 @@ Float_t getAngle(string angle="21",string spec="shms"){
   cout << "Correcting central angle for beam angle"<<endl;
   cout << "Before: "<<thetac<<endl;
   Float_t beamTheta=0.0;
-  //    beamTheta=-.00045; //shooting beam right .45mr
+  //beamTheta=-.00045; //shooting beam right .45mr
   if(spec=="hms")beamTheta*=-1;
-  thetac+=beamTheta*180./TMath::Pi();
+    thetac+=beamTheta*180./TMath::Pi();
   cout << "After: "<<thetac<<endl;
   //////////////////////////////////////
 

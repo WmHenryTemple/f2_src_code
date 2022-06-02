@@ -4,12 +4,19 @@ void xsecTable(TGraphErrors *gcxa, TGraphErrors *gcx, TGraphErrors *grerr, TGrap
   //grerr2   band
   //gdm  0   data/MC
 
+
+
+
   ofstream outFile;
   if(target=="h")outFile.open("xsec_H_Table.txt",ios::app | ios::out );
   if(target=="d")outFile.open("xsec_D_Table.txt",ios::app | ios::out );
   if(target=="r")outFile.open("xsec_R_Table.txt",ios::app | ios::out );
 
-
+  cout << gcx->GetN()<<"\t";
+  cout << gcxa->GetN()<<"\t";
+  cout << grerr->GetN()<<"\t";
+  cout << gdm->GetN()<<"\t";
+  cout<<endl;
   for(int i=0; i < gcx->GetN(); i++){
     //    cout << "There are " << gcx->GetN()<<"points"<<endl;
     double xb, xsec, perr, gerr, dum, delta, rat, raterr, staterr;
@@ -43,6 +50,8 @@ void xsecTable(TGraphErrors *gcxa, TGraphErrors *gcx, TGraphErrors *grerr, TGrap
     Double_t ep= (mp*xb*ebeam) / (2*ebeam*sin2+mp*xb );
     Double_t nu= ebeam-ep;
     Double_t q2 = 4.*ep*ebeam*sin2;
+    cout <<"q2"<<"\t"<<"ep"<<"\t"<<"ebeam"<<"\t"<<sin2<<"\t"<<"thetac"<<endl;
+    cout <<q2<<"\t"<<ep<<"\t"<<ebeam<<"\t"<<sin2<<"\t"<<thetac<<endl;
     Double_t w2= mp*mp + 2.*mp*nu-q2;
     Double_t nu2=nu*nu;
     Double_t tan2=tan(thetac/2/180*TMath::Pi())*tan(thetac/2/180*TMath::Pi());

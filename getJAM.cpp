@@ -52,12 +52,13 @@ TGraphErrors* getJAM(double angle=21.){
 	{
 	  if(abs(th[i]-angle)<.25)
 	    {
+	      /*
 	      cout << x[i]<<"\t";
 	      cout << q2[i]<<"\t";
 	      cout << th[i]<<"\t";
 	      cout << f2dp[i]<<"\t";
 	      cout << err[i]<<endl;	      
-	      
+	      */
 	      xx.push_back(x[i]);
 	      yy.push_back(f2dp[i]);
 	      ye.push_back(err[i]);	      
